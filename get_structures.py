@@ -2,13 +2,15 @@
 """
 get_structures.py
 
+This script is only provided as reference for how data.csv was
+generated. Accompanying data is not present in this repository.
+
 objectives of this script:
 1. Provide PDB files
 2. Provide csv file
    - Link each gene to structure file
    - Provide details on each gene
    - csv file should have as many rows as there are codons x genes
-
 
 Note, PDB numbering is not guaranteed to be good
 https://proteopedia.org/wiki/index.php/Unusual_sequence_numbering
@@ -142,7 +144,7 @@ def main(args):
 
     # We don't need the SCOP data for domain annotation
     names = names.groupby(level='name').head(1)
-    names = names.drop(columns=['domain', 'pdbid'])
+    names = names.drop(columns=['domain', 'pdbid', 'chain'])
 
     # Will's enrichment data
     enrichment = pd.read_pickle(ENRICHMENT)
